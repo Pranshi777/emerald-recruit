@@ -14,7 +14,77 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      candidates: {
+        Row: {
+          ai_score: number | null
+          ai_summary: string | null
+          created_at: string
+          email: string
+          id: string
+          job_id: string
+          name: string
+          resume_url: string | null
+          status: string
+        }
+        Insert: {
+          ai_score?: number | null
+          ai_summary?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          job_id: string
+          name: string
+          resume_url?: string | null
+          status?: string
+        }
+        Update: {
+          ai_score?: number | null
+          ai_summary?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          job_id?: string
+          name?: string
+          resume_url?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "candidates_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "jobs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      jobs: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          status: string
+          title: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          status?: string
+          title: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          status?: string
+          title?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

@@ -1,4 +1,4 @@
-import { Bot, LayoutDashboard, Briefcase, Users, BarChart3, Settings, LogOut } from "lucide-react";
+import { Bot, LayoutDashboard, Briefcase, Users, BarChart3, Settings, LogOut, UserPlus } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useAuth } from "@/hooks/useAuth";
 import {
@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 
 const mainNavItems = [
   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
+  { title: "New Application", url: "/new-application", icon: UserPlus },
   { title: "Jobs", url: "/jobs", icon: Briefcase },
   { title: "Candidates", url: "/candidates", icon: Users },
   { title: "Analytics", url: "/analytics", icon: BarChart3 },

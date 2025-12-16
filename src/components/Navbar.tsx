@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Bot } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 
 const Navbar = () => {
+  const { user, loading } = useAuth();
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="container mx-auto px-6 h-16 flex items-center justify-between">
@@ -16,11 +19,21 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center gap-4">
-          <Link to="/auth">
-            <Button variant="hero" size="default">
-              Login
-            </Button>
-          </Link>
+          {!loading && (
+            user ? (
+              <Link to="/dashboard">
+                <Button variant="hero" size="default">
+                  Dashboard
+                </Button>
+              </Link>
+            ) : (
+              <Link to="/auth">
+                <Button variant="hero" size="default">
+                  Login
+                </Button>
+              </Link>
+            )
+          )}
         </div>
       </div>
     </nav>
